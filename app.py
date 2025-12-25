@@ -7,7 +7,7 @@ from huggingface_hub import hf_hub_download
 MODEL_FILE = hf_hub_download(
     repo_id="jgvghf/car-insurance-model",
     filename="final_model.joblib",
-    token=st.secrets["HUGGINGFACE_TOKEN"]
+    token=st.secrets["HuggingFace_token"]
 )
 
 
