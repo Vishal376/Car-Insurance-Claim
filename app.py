@@ -2,25 +2,19 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import joblib
-import os
-import requests
+from huggingface_hub import hf_hub_download
 
-MODEL_URL=r'https://huggingface.co/jgvghf/car-insurance-model/blob/main/final_model.joblib'
-MODEL_PATH = r"models/final_model.joblib"
+MODEL_FILE = hf_hub_download(
+    repo_id="jgvghf/car-insurance-model",
+    filename="final_model.joblib",
+    token=st.secrets["HuggingFace_token"]
+)
 
-
-
-os.makedirs("models", exist_ok=True) #if exists then not make again
-
-#Download model if not exists
-if not os.path.exists(MODEL_PATH):
-    st.info("Downloading from HuggingFace")
-    with open(MODEL_PATH,"wb") as f:
-        f.write(requests.get(MODEL_URL).content)
 
 
 # Load trained model
-model = joblib.load(MODEL_PATH)
+model = joblib.load(MODEL_FILE)
+
 
 st.set_page_config(page_title="Car Insurance Claim Predictor", layout="wide")
 st.title("Car Insurance Claim Predictor 🚗")
