@@ -1,0 +1,11 @@
+pandas
+streamlit
+joblib
+numpy
+seaborn
+matplotlib
+scikit-learn
+xgboost
+lightgbm
+git
+huggingface_hub
